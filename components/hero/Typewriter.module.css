@@ -1,0 +1,18 @@
+.typewriter {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.2em; /* Prevent layout shift */
+}
+
+.cursor {
+  font-weight: 300;
+  color: var(--color-accent);
+  animation: blink 1s step-start infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

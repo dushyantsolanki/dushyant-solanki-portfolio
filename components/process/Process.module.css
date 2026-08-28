@@ -1,0 +1,181 @@
+.section {
+  /* inherits from section--muted */
+}
+
+/* Timeline container */
+.timelineWrapper {
+  position: relative;
+  padding-block: var(--space-8);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  position: relative;
+  z-index: 2;
+}
+
+/* Vertical connecting line */
+.timelineLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px; /* Mobile left-aligned */
+  width: 1px;
+  background-color: var(--color-border);
+  z-index: 1;
+}
+
+/* Step Container */
+.step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Mobile: all steps flow to the right of the line */
+.stepContent {
+  margin-left: 64px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: calc(100% - 64px);
+  transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.step:hover .stepContent {
+  border-color: rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.04);
+}
+
+.timelineNode {
+  position: absolute;
+  left: 12px;
+  top: 32px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-base);
+}
+
+.timelineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  transition: transform var(--transition-base);
+}
+
+.step:hover .timelineNode {
+  border-color: var(--color-accent);
+}
+
+.step:hover .timelineDot {
+  transform: scale(1.5);
+}
+
+/* Creative Typography */
+.stepNumber {
+  position: absolute;
+  bottom: var(--space-4);
+  right: var(--space-6);
+  font-size: clamp(4rem, 10vw, 7rem); /* Reduced size so it fits perfectly inside without cuts */
+  font-weight: 900;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-border);
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.step:hover .stepNumber {
+  -webkit-text-stroke-color: var(--color-accent);
+  opacity: 0.7;
+  transform: scale(1.05) translateY(-4px);
+}
+
+/* Mobile: Highlight numbers by default without hover */
+@media (max-width: 1023px) {
+  .stepNumber {
+    -webkit-text-stroke-color: var(--color-accent);
+    opacity: 0.6;
+  }
+}
+
+.stepTitle {
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-text);
+  position: relative;
+  z-index: 1;
+}
+
+.stepDesc {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  position: relative;
+  z-index: 1;
+}
+
+/* Desktop: Alternating Zig-Zag */
+@media (min-width: 1024px) {
+  .timelineLine {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .step {
+    justify-content: space-between;
+  }
+
+  .stepContent {
+    width: calc(50% - 48px);
+    margin: 0;
+  }
+
+  .timelineNode {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Left aligned cards */
+  .stepLeft {
+    flex-direction: row;
+  }
+
+  .stepLeft .stepContent {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  /* Right aligned cards */
+  .stepRight {
+    flex-direction: row-reverse;
+  }
+
+  .stepRight .stepContent {
+    text-align: left;
+    align-items: flex-start;
+  }
+}

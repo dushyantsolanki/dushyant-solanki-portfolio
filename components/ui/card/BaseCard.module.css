@@ -1,0 +1,30 @@
+.card {
+  background-color: transparent;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: var(--spacing-card);
+  transition: transform var(--transition-card), box-shadow var(--transition-card), border-color var(--transition-card);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  will-change: transform, box-shadow;
+}
+
+.darkCard {
+  background-color: var(--color-surface-dark);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--color-white);
+}
+
+.card:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.darkCard:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}

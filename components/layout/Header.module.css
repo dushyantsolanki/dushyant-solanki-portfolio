@@ -1,0 +1,250 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-white);
+  transition: box-shadow var(--transition-base);
+}
+
+.scrolled {
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: var(--space-4);
+}
+
+.logo {
+  font-size: var(--font-size-small);
+  font-weight: 800;
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 36px);
+}
+
+.navLink {
+  font-size: var(--font-size-caption);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  padding: 4px 0;
+  position: relative;
+  transition: color var(--transition-base);
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+.navLink:hover {
+  color: var(--color-accent);
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width var(--transition-base), left var(--transition-base);
+}
+
+.navLink:hover::after,
+.navLinkActive::after {
+  width: 100%;
+  left: 0;
+}
+
+.navLinkActive {
+  color: var(--color-accent);
+}
+
+.cta {
+  display: none;
+  font-size: var(--font-size-caption) !important;
+  padding: 10px 20px !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Hamburger */
+.menuBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: calc(var(--z-overlay) + 1);
+  padding: 0;
+}
+
+.menuLine {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all var(--transition-base);
+  border-radius: 1px;
+}
+
+.menuBtnOpen .menuLine:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuBtnOpen .menuLine:nth-child(2) {
+  opacity: 0;
+}
+
+.menuBtnOpen .menuLine:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Mobile Sidebar (Drawer) --- */
+@media (max-width: 1023px) {
+  .nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(380px, 90vw);
+    height: 100dvh;
+    background-color: var(--color-white);
+    flex-direction: column;
+    padding: 100px var(--space-10) var(--space-10);
+    z-index: var(--z-overlay);
+    box-shadow: -20px 0 80px rgba(0, 0, 0, 0.08);
+
+    /* Premium smooth animation out */
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .navOpen {
+    transform: translateX(0);
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    width: 100%;
+  }
+
+  .navLink {
+    font-size: clamp(2rem, 5vw, 3rem);
+    /* Huge editorial typography */
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    padding: var(--space-2) 0;
+    display: block;
+    width: 100%;
+    color: var(--color-text);
+
+    /* Staggered fade in prep */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), color var(--transition-base);
+  }
+
+  /* When nav is open, fade the links in with a stagger */
+  .navOpen .navLink {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .navOpen li:nth-child(1) .navLink {
+    transition-delay: 0.1s;
+  }
+
+  .navOpen li:nth-child(2) .navLink {
+    transition-delay: 0.15s;
+  }
+
+  .navOpen li:nth-child(3) .navLink {
+    transition-delay: 0.2s;
+  }
+
+  .navOpen li:nth-child(4) .navLink {
+    transition-delay: 0.25s;
+  }
+
+  .navOpen li:nth-child(5) .navLink {
+    transition-delay: 0.3s;
+  }
+
+  .navLink::after {
+    display: none;
+    /* No underlines on the huge mobile menu */
+  }
+
+  .navLink:hover,
+  .navLinkActive {
+    color: var(--color-accent);
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    /* Premium blur effect */
+    z-index: calc(var(--z-overlay) - 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  /* We control the overlay entirely via CSS adjacent sibling or by attaching a class, 
+     but Header.tsx dynamically unmounts the overlay. Let's rely on standard animation for mount if needed,
+     or we can just leave it to Header.tsx unmounting it. */
+  .overlay {
+    animation: fadeIn 0.4s ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tablet+ */
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+
+  .cta {
+    display: inline-flex;
+  }
+
+  .menuBtn {
+    display: none;
+  }
+}

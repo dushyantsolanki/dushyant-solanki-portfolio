@@ -1,0 +1,75 @@
+.horizontalContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-card);
+  height: 100%;
+}
+
+.horizontalImageWrapper {
+  overflow: hidden;
+  border-radius: var(--radius-image);
+  aspect-ratio: 16 / 9;
+  position: relative;
+  width: 100%;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+@media (min-width: 1024px) {
+  .horizontalContent {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .horizontalImageWrapper {
+    width: 55%;
+    flex-shrink: 0;
+    aspect-ratio: auto; /* Let it fill the height */
+  }
+
+  .textContent {
+    padding-left: 16px;
+  }
+}
+
+.title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+  max-width: 90%;
+}
+
+.explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.arrow {
+  color: var(--color-accent);
+  transition: transform var(--transition-base);
+}
+
+:global(.card:hover) .arrow {
+  transform: translateX(4px);
+}

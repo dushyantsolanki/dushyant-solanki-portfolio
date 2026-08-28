@@ -1,0 +1,151 @@
+/* ==========================================================================
+   TESTIMONIALS SWIPER
+   ========================================================================== */
+
+/* --- Navigation Arrows --- */
+.navArrows {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all var(--transition-base);
+}
+
+.navBtn:hover:not(:disabled) {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* --- Slider Container --- */
+.slider {
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  container-type: inline-size;
+}
+
+.slider:active {
+  cursor: grabbing;
+}
+
+/* --- Track (slides row) --- */
+.track {
+  display: flex;
+  gap: 16px;
+  /* Shift by currentIndex * (100cqi / slidesPerView + proportional gap) */
+  transform: translateX(calc(-1 * var(--current-index) * ((100cqi + 16px) / var(--slides-per-view))));
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* --- Individual Slide --- */
+.slide {
+  flex-shrink: 0;
+  /* Slide width = (Container width - total gaps) / slidesPerView */
+  width: calc((100cqi - ((var(--slides-per-view) - 1) * 16px)) / var(--slides-per-view));
+}
+
+/* --- Testimonial Card --- */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* --- Quote Icon --- */
+.quoteIcon {
+  color: var(--color-accent);
+}
+
+/* --- Quote Text --- */
+.quoteText {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+  font-style: normal;
+  flex: 1;
+}
+
+/* --- Author Footer --- */
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authorName {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.authorRole {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-muted);
+}
+
+/* --- Dot Indicators --- */
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-base);
+}
+
+.dot:hover {
+  border-color: var(--color-text-light);
+}
+
+.dotActive {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
