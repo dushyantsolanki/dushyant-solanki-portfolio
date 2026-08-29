@@ -93,7 +93,19 @@
   gap: var(--space-3);
   margin-top: auto;
   padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+.author::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  height: 1px;
+  background-color: var(--color-border);
+  border-radius: 50%;
 }
 
 .avatar {
