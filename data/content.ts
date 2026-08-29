@@ -195,8 +195,7 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { platform: "linkedin", href: "#", label: "LinkedIn" },
-  { platform: "twitter", href: "#", label: "Twitter" },
-  { platform: "dribbble", href: "#", label: "Dribbble" },
-  { platform: "instagram", href: "#", label: "Instagram" },
+  { platform: "linkedin", href: "https://www.linkedin.com/in/dushyantsolanki", label: "LinkedIn" },
+  { platform: "twitter", href: "https://x.com/Dushyantdotdev", label: "Twitter" },
+  { platform: "instagram", href: "https://www.instagram.com/dushyantsolanky", label: "Instagram" },
 ];
