@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     description:
       "I design websites that drive results. View my portfolio and let's work together.",
     type: "website",
+    images: '/image.jpeg'
   },
 };
 

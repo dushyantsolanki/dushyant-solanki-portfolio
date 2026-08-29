@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import connectToDatabase from "@/lib/mongodb";
+import Contact from "@/models/Contact";
 
 const ALLOWED_PROJECT_TYPES = [
     "web-design",
@@ -255,135 +254,32 @@ export async function POST(request: Request) {
 
         /*
          * ----------------------------------------
-         * 12. Send email using Resend
+         * 12. Save to MongoDB
          * ----------------------------------------
          */
 
-        const contactEmail =
-            process.env.CONTACT_EMAIL;
+        await connectToDatabase();
 
-        if (!contactEmail) {
-            console.error(
-                "CONTACT_EMAIL is not configured."
-            );
+        const newContact = new Contact({
+            name: cleanName,
+            email: cleanEmail,
+            projectType,
+            budget,
+            message: cleanMessage,
+            website,
+        });
 
-            return NextResponse.json(
-                {
-                    error:
-                        "Email service is not configured.",
-                },
-                { status: 500 }
-            );
-        }
-
-        const { data, error } =
-            await resend.emails.send({
-                from:
-                    "Portfolio Contact <onboarding@resend.dev>",
-
-                to: [contactEmail],
-
-                replyTo: cleanEmail,
-
-                subject: `New Portfolio Inquiry — ${cleanName}`,
-
-                text: `
-New contact form submission
-
-Name:
-${cleanName}
-
-Email:
-${cleanEmail}
-
-Project Type:
-${projectType}
-
-Budget:
-${budget}
-
-Message:
-${cleanMessage}
-        `.trim(),
-
-                html: `
-          <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-            <h2>New Portfolio Inquiry</h2>
-
-            <p>
-              You received a new message from your portfolio.
-            </p>
-
-            <hr />
-
-            <p>
-              <strong>Name:</strong><br />
-              ${escapeHtml(cleanName)}
-            </p>
-
-            <p>
-              <strong>Email:</strong><br />
-              ${escapeHtml(cleanEmail)}
-            </p>
-
-            <p>
-              <strong>Project Type:</strong><br />
-              ${escapeHtml(projectType)}
-            </p>
-
-            <p>
-              <strong>Budget:</strong><br />
-              ${escapeHtml(budget)}
-            </p>
-
-            <p>
-              <strong>Message:</strong><br />
-              ${escapeHtml(cleanMessage).replace(
-                    /\n/g,
-                    "<br />"
-                )}
-            </p>
-
-            <hr />
-
-            <p>
-              You can reply directly to this email to
-              contact the client.
-            </p>
-          </div>
-        `,
-            });
+        await newContact.save();
 
         /*
          * ----------------------------------------
-         * 13. Handle Resend error
-         * ----------------------------------------
-         */
-
-        if (error) {
-            console.error(
-                "Resend error:",
-                error
-            );
-
-            return NextResponse.json(
-                {
-                    error:
-                        "Unable to send your message right now.",
-                },
-                { status: 500 }
-            );
-        }
-
-        /*
-         * ----------------------------------------
-         * 14. Success
+         * 13. Success
          * ----------------------------------------
          */
 
         console.log(
-            "Contact email sent successfully:",
-            data?.id
+            "Contact form saved successfully to database:",
+            newContact._id
         );
 
         return NextResponse.json(

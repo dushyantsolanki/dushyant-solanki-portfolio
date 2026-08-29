@@ -163,6 +163,24 @@
   }
 }
 
+.turnstile {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  min-height: 65px;
+}
+
+.errorMessage {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.successMessage {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 /* Desktop */
 @media (min-width: 1024px) {
   .inner {
