@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { stats } from "@/data/content";
 import Typewriter from "./Typewriter";
+import CalButton from "../ui/CalButton";
 import styles from "./Hero.module.css";
 function StatItem({ value, label }: { value: string; label: string }) {
   return (
@@ -80,8 +81,11 @@ export default function Hero() {
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
-            <a href="#contact" className="btn btn--outline">
-              LET&apos;S WORK TOGETHER
+            <CalButton
+              buttonText="SCHEDULE A MEETING"
+              calLink="dushyant-solanki-nou63k"
+              className="btn btn--outline"
+            >
               <svg
                 className="arrow"
                 width="16"
@@ -96,7 +100,7 @@ export default function Hero() {
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </CalButton>
           </div>
 
           <div className={styles.stats}>
