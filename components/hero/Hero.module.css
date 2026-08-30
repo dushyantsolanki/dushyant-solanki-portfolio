@@ -155,8 +155,8 @@
 
 .portrait {
   position: absolute;
-  bottom: 44px;
-  right: 0px;
+  bottom: 20px;
+  right: -70px;
   z-index: 0;
   width: 110%;
   height: 110%;
@@ -172,7 +172,7 @@
 .signature {
   position: absolute;
   top: 15%;
-  right: 15%;
+  right: 0%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -255,7 +255,7 @@
 /* Desktop */
 @media (min-width: 1024px) {
   .heroInner {
-    grid-template-columns: 55% 1fr;
+    grid-template-columns: 60% 40%;
     gap: 0;
     padding-top: clamp(48px, 6vw, 80px);
     padding-bottom: 0;
