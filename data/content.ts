@@ -11,6 +11,7 @@ export interface Stat {
 
 export interface Brand {
   name: string;
+  icon: string;
 }
 
 export interface Project {
@@ -61,15 +62,15 @@ export const stats: Stat[] = [
 ];
 
 export const brands: Brand[] = [
-  { name: "Next.js" },
-  { name: "React" },
-  { name: "Node.js" },
-  { name: "AWS" },
-  { name: "Docker" },
-  { name: "Vercel" },
-  { name: "MongoDB" },
-  { name: "TypeScript" },
-  { name: "GitHub" },
+  { name: "Next.js", icon: "nextdotjs" },
+  { name: "React", icon: "react" },
+  { name: "Node.js", icon: "nodedotjs" },
+  { name: "AWS", icon: "amazon-web-services" },
+  { name: "Docker", icon: "docker" },
+  { name: "Vercel", icon: "vercel" },
+  { name: "MongoDB", icon: "mongodb" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "GitHub", icon: "github" },
 ];
 
 export const projects: Project[] = [

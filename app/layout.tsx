@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     "web development",
   ],
   openGraph: {
-    title: "Dushyant S. — Freelance Web Designer",
+    title: "Dushyant S.",
     description:
       "I design websites that drive results. View my portfolio and let's work together.",
-    type: "website",
-    images: '/images/image.png'
+    type: "website"
+
   },
 };
 
