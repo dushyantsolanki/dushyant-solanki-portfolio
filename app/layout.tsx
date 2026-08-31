@@ -36,6 +36,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Dushyant S.",
+              "jobTitle": "Full-Stack Web Developer",
+              "url": "https://dushyant-solanki-portfolio.vercel.app",
+              "image": "https://dushyant-solanki-portfolio.vercel.app/images/image.png",
+              "email": "mailto:dushyantsolanki.dev@gmail.com",
+              "telephone": "+91-7623057936",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ahmedabad",
+                "addressRegion": "Gujarat",
+                "addressCountry": "IN"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/in/dushyantsolanki",
+                "https://x.com/Dushyantdotdev",
+                "https://www.instagram.com/dushyantsolanky"
+              ],
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Freelance"
+              },
+              "knowsAbout": [
+                "Next.js",
+                "React",
+                "Node.js",
+                "TypeScript",
+                "AWS",
+                "Docker",
+                "MongoDB"
+              ]
+            }),
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
