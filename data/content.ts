@@ -55,8 +55,8 @@ export const navLinks: NavLink[] = [
 ];
 
 export const stats: Stat[] = [
-  { value: "7+", label: "YEARS EXPERIENCE" },
-  { value: "150+", label: "PROJECTS COMPLETED" },
+  { value: "3.5+", label: "YEARS EXPERIENCE" },
+  { value: "10+", label: "PROJECTS COMPLETED" },
   { value: "98%", label: "CLIENT SATISFACTION" },
 ];
 
@@ -69,6 +69,7 @@ export const brands: Brand[] = [
   { name: "Vercel" },
   { name: "MongoDB" },
   { name: "TypeScript" },
+  { name: "GitHub" },
 ];
 
 export const projects: Project[] = [
@@ -152,42 +153,42 @@ export const processSteps: ProcessStep[] = [
 export const testimonials: Testimonial[] = [
   {
     quote:
-      '"Owen is a phenomenal designer! He took our ideas and turned them into a beautiful, high-converting website. The process was smooth and professional from start to finish."',
+      '"Dushyant is a phenomenal designer! He took our ideas and turned them into a beautiful, high-converting website. The process was smooth and professional from start to finish."',
     name: "Jason Miller",
     role: "CEO, Nexora",
     avatar: "/images/avatar-jason.jpg",
   },
   {
     quote:
-      '"Working with Owen was a fantastic experience. His attention to detail, creativity, and expertise truly set him apart. Our new site has never performed better."',
+      '"Working with Dushyant was a fantastic experience. His attention to detail, creativity, and expertise truly set him apart. Our new site has never performed better."',
     name: "Sarah Thompson",
     role: "Marketing Director, Studio North",
     avatar: "/images/avatar-sarah.jpg",
   },
   {
     quote:
-      '"Owen delivered beyond our expectations. The website is modern, fast, and perfectly represents our brand. Highly recommended!"',
+      '"Dushyant delivered beyond our expectations. The website is modern, fast, and perfectly represents our brand. Highly recommended!"',
     name: "Daniel Roberts",
     role: "Founder, Innovate AI",
     avatar: "/images/avatar-daniel.jpg",
   },
   {
     quote:
-      '"The redesign completely transformed our online presence. Owen understood our vision from day one and executed it flawlessly. Traffic increased by 40% within the first month."',
+      '"The redesign completely transformed our online presence. Dushyant understood our vision from day one and executed it flawlessly. Traffic increased by 40% within the first month."',
     name: "Emily Chen",
     role: "COO, Vertex Labs",
     avatar: "/images/avatar-sarah.jpg",
   },
   {
     quote:
-      '"Owen has an incredible eye for design. He created a website that not only looks stunning but also drives real business results. A true professional."',
+      '"Dushyant has an incredible eye for design. He created a website that not only looks stunning but also drives real business results. A true professional."',
     name: "Marcus Williams",
     role: "Director, Craft & Co",
     avatar: "/images/avatar-jason.jpg",
   },
   {
     quote:
-      '"From concept to launch, Owen made the entire process effortless. His ability to translate complex ideas into clean, intuitive designs is unmatched."',
+      '"From concept to launch, Dushyant made the entire process effortless. His ability to translate complex ideas into clean, intuitive designs is unmatched."',
     name: "Lisa Park",
     role: "Founder, Bloom Studio",
     avatar: "/images/avatar-daniel.jpg",
@@ -198,4 +199,5 @@ export const socialLinks: SocialLink[] = [
   { platform: "linkedin", href: "https://www.linkedin.com/in/dushyantsolanki", label: "LinkedIn" },
   { platform: "twitter", href: "https://x.com/Dushyantdotdev", label: "Twitter" },
   { platform: "instagram", href: "https://www.instagram.com/dushyantsolanky", label: "Instagram" },
+  { platform: "drive", href: "https://drive.google.com/file/d/13kUYQpdS-KlZtRQ8borLpiKvOzc3YGtB/view?usp=sharing", label: "Resume" }
 ];
